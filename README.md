@@ -32,6 +32,7 @@ El objetivo principal es solucionar la dificultad de comparar precios en distint
 
 ## 📂 Estructura del Proyecto
 
+```text
 /ssdsApp
   ├── /.git
   ├── /client          (Frontend: React + Vite) 
@@ -48,3 +49,4 @@ El objetivo principal es solucionar la dificultad de comparar precios en distint
   │      └── index.js         (Entry point)
   ├── .gitignore       (Ignorar node_modules, .env, etc.)
   └── README.md        (Documentación esencial del proyecto)
+```
