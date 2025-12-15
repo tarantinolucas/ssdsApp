@@ -55,7 +55,7 @@ const CotizacionSchema = new Schema({
 // Definimos el esquema principal del requerimiento
 const RequerimientoSchema = new Schema(
   {
-    product_id: {
+    producto_id: {
       type: Schema.Types.ObjectId,
       ref: "Producto",
       required: true,
