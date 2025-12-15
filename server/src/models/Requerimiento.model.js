@@ -40,7 +40,7 @@ const CotizacionSchema = new Schema({
   },
 
   // Calculos - Reglas de negocio
-  procentajeDescuento: { type: Number, default: 0 },
+  porcentajeDescuento: { type: Number, default: 0 },
   montoDescuentoTotal: { type: Number, default: 0 },
   subtotal: { type: Number, required: true },
   alicuotaIVA: { type: Number, required: true },

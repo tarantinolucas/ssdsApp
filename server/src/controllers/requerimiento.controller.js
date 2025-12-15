@@ -1,5 +1,6 @@
 const requerimientoService = require("../services/requerimiento.service");
 
+// Controlador para crear un nuevo requerimiento
 const crearRequerimiento = async (req, res) => {
   try {
     const data = req.body;
@@ -33,6 +34,7 @@ const crearRequerimiento = async (req, res) => {
   }
 };
 
+// Controlador para obtener todos los requerimientos
 const obtenerRequerimientos = async (req, res) => {
   try {
     const requerimientos = await requerimientoService.obtenerRequerimientos();
@@ -42,4 +44,35 @@ const obtenerRequerimientos = async (req, res) => {
   }
 };
 
-module.exports = { crearRequerimiento, obtenerRequerimientos };
+// Controlador para agregar una cotización a un requerimiento
+const agregarCotizacion = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const datosCotizacion = req.body;
+
+    const requerimientoActualizado =
+      await requerimientoService.agregarCotizacion(id, datosCotizacion);
+
+    return res.status(200).json({
+      mensaje: "Cotización agregada exitosamente",
+      data: requerimientoActualizado,
+    });
+  } catch (error) {
+    if (error.status)
+      return res.status(error.status).json({ mensaje: error.message });
+    if (error.name === "ValidationError")
+      return res
+        .status(400)
+        .json({ mensaje: "Error de validación", errores: error.message });
+
+    console.error(error);
+    return res.status(500).json({ mensaje: "Error interno del servidor" });
+  }
+};
+
+// Exportamos los controladores
+module.exports = {
+  crearRequerimiento,
+  obtenerRequerimientos,
+  agregarCotizacion,
+};
