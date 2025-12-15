@@ -12,7 +12,7 @@ const crearProducto = async (productoData) => {
 
 const obtenerProductos = async () => {
   try {
-    const productos = await Producto.find();
+    const productos = await Producto.find().sort({ createdAt: -1 }).lean();
     return productos;
   } catch (error) {
     console.error("Error en el servicio al obtener productos:", error);
